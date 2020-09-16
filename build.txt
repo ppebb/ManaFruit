@@ -1,0 +1,8 @@
+displayName = [c/9370DB:Mana Fruit Mod]
+author = pollen__
+version = 0.1
+homepage = https://discord.gg/EB6yPZj
+hideCode = true
+hideResources = true
+includeSource = false
+includePDB = false

@@ -1,0 +1,7 @@
+This mod adds 3 things:
+
+ ~ Mana Fruit Item
+ ~ Mana Fruit Tile
+ ~ Mana Fruit UI
+
+Yes I know setting my discord as the home page is stupid, but I'm not setting up a GitHub or a forum page for something this small.
