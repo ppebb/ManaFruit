@@ -4,4 +4,11 @@ This mod adds 3 things:
  ~ Mana Fruit Tile
  ~ Mana Fruit UI
 
-Yes I know setting my discord as the home page is stupid, but I'm not setting up a GitHub or a forum page for something this small.
+ Changelog:
+
+v0.1.1 ~
+ ~ Fixed issues with certain resolutions and UI zoom
+ ~ Added an icon and a github repo
+
+ v0.1 ~
+ ~ Added base funtionality

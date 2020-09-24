@@ -2,15 +2,18 @@ using ReLogic.Graphics;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
+using Terraria.Graphics.Shaders;
+using Terraria.Graphics.Effects;
 
 namespace ManaFruit
 {
 	public class ManaFruitMod : Mod
 	{
         public static SpriteBatch spriteBatch = Main.spriteBatch;
-        public int UI_ScreenAnchorX = Main.screenWidth - 800;
+        public int UI_ScreenAnchorX => Main.screenWidth - 800;
         public override void Load()
 		{
 			On.Terraria.Main.DrawInterface_Resources_Mana += ManaFruitUI;
