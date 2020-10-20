@@ -5,8 +5,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
-using Terraria.Graphics.Shaders;
-using Terraria.Graphics.Effects;
 
 namespace ManaFruit
 {

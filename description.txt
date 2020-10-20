@@ -1,10 +1,15 @@
 This mod adds 3 things:
 
- ~ Mana Fruit Item
- ~ Mana Fruit Tile
- ~ Mana Fruit UI
+  ~ Mana Fruit Item
+  ~ Mana Fruit Tile
+  ~ Mana Fruit UI
+
+Mana Fruit spawns at the same time as Life Fruit. They spawn in the jungle and can be detected by both metal detectors and spelunker potions. You can consume a maximum of 10 fruits for a total of 300 mana.
 
  Changelog:
+
+v0.1.2 ~
+ ~ Added Spelling and a more comprehensive description
 
 v0.1.1 ~
  ~ Fixed issues with certain resolutions and UI zoom

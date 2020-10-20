@@ -39,5 +39,12 @@ float4 Shockwave(float4 position : SV_Position, float2 coords : TEXCOORD0) : COL
 	float2 sampleCoords = coords + ((ripple * uOpacity / uScreenResolution) * centerCoords);
 
 	return tex2D(uImage0, sampleCoords);
+}
 
+technique ShockwaveBasic
+{
+    pass Shockwave
+    {
+        PixelShader = compile ps_2_0 Shockwave();
+    }
 }
