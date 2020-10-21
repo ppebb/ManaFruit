@@ -1,6 +1,4 @@
-﻿using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
 namespace ManaFruit
@@ -10,7 +8,12 @@ namespace ManaFruit
 		public int manaFruits;
 		public const int maxManaFruits = 10;
 
-		public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        public override void ResetEffects()
+        {
+            player.statManaMax2 += manaFruits * 10;
+        }
+
+        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
         {
             ModPacket packet = mod.GetPacket();
             packet.Write((byte)player.whoAmI);

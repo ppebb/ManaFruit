@@ -27,8 +27,7 @@ namespace ManaFruit.Items
 
         public override bool CanUseItem(Player player)
         {
-            //return player.statManaMax == 200 && player.GetModPlayer<FruitPlayer>().manaFruits < FruitPlayer.maxManaFruits;
-            return true;
+            return player.statManaMax == 200 && player.GetModPlayer<FruitPlayer>().manaFruits < FruitPlayer.maxManaFruits;
         }
 
         public override bool UseItem(Player player)

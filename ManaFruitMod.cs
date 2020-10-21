@@ -2,9 +2,10 @@ using ReLogic.Graphics;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
+using MonoMod.Cil;
+using System;
 
 namespace ManaFruit
 {
@@ -14,9 +15,38 @@ namespace ManaFruit
         public int UI_ScreenAnchorX => Main.screenWidth - 800;
         public override void Load()
 		{
+			IL.Terraria.Player.LoadPlayer += Player_LoadPlayer;
+			IL.Terraria.Player.Update += Player_Update;
 			On.Terraria.Main.DrawInterface_Resources_Mana += ManaFruitUI;
 		}
-        private void ManaFruitUI(On.Terraria.Main.orig_DrawInterface_Resources_Mana orig)
+
+		private void Player_Update(ILContext il)
+		{
+            ILCursor c = new ILCursor(il);
+
+            if (!c.TryGotoNext(MoveType.Before, i => i.MatchLdfld("Terraria.Player", "statManaMax2"), i => i.MatchLdcI4(400)))
+			{
+                Logger.Fatal("Instruction not found");
+                return;
+			}
+
+            c.Next.Next.Operand = 500;
+		}
+
+		private void Player_LoadPlayer(ILContext il)
+		{
+            ILCursor c = new ILCursor(il);
+
+            if (!c.TryGotoNext(MoveType.Before, i => i.MatchLdfld("Terraria.Player", "statMana"), i => i.MatchLdcI4(400)))
+            {
+                Logger.Fatal("Instruction not found");
+                return;
+			}
+
+            c.Next.Next.Operand = 500;
+		}
+
+		private void ManaFruitUI(On.Terraria.Main.orig_DrawInterface_Resources_Mana orig)
         {
             Player player = Main.player[Main.myPlayer];
             int fruits = player.GetModPlayer<FruitPlayer>().manaFruits;
