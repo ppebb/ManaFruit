@@ -31,7 +31,8 @@ namespace ManaFruit
 			}
 
             c.Next.Next.Operand = 500;
-		}
+            c.Next.Next.Next.Next.Next.Operand = 500;
+        }
 
 		private void Player_LoadPlayer(ILContext il)
 		{
