@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using MonoMod.Cil;
-using System;
+using Mono.Cecil.Cil;
 
 namespace ManaFruit
 {
@@ -23,29 +23,30 @@ namespace ManaFruit
 		private void Player_Update(ILContext il)
 		{
             ILCursor c = new ILCursor(il);
-
             if (!c.TryGotoNext(MoveType.Before, i => i.MatchLdfld("Terraria.Player", "statManaMax2"), i => i.MatchLdcI4(400)))
 			{
                 Logger.Fatal("Instruction not found");
                 return;
 			}
-
-            c.Next.Next.Operand = 500;
-            c.Next.Next.Next.Next.Next.Operand = 500;
+            c.Index += 2;
+            c.Instrs[c.Index].Operand = 500;
+            c.Index += 3;
+            c.Instrs[c.Index].Operand = 500;
         }
 
 		private void Player_LoadPlayer(ILContext il)
 		{
             ILCursor c = new ILCursor(il);
-
             if (!c.TryGotoNext(MoveType.Before, i => i.MatchLdfld("Terraria.Player", "statMana"), i => i.MatchLdcI4(400)))
             {
                 Logger.Fatal("Instruction not found");
                 return;
 			}
-
-            c.Next.Next.Operand = 500;
-		}
+            c.Index += 2;
+            c.Instrs[c.Index].Operand = 500;
+            c.Index += 3;
+            c.Instrs[c.Index].Operand = 500;
+        }
 
 		private void ManaFruitUI(On.Terraria.Main.orig_DrawInterface_Resources_Mana orig)
         {
