@@ -15,40 +15,40 @@ namespace ManaFruit
         public int UI_ScreenAnchorX => Main.screenWidth - 800;
         public override void Load()
 		{
-			IL.Terraria.Player.LoadPlayer += Player_LoadPlayer;
 			IL.Terraria.Player.Update += Player_Update;
 			On.Terraria.Main.DrawInterface_Resources_Mana += ManaFruitUI;
 		}
 
-		private void Player_Update(ILContext il)
-		{
+        private void Player_Update(ILContext il)
+        {
             ILCursor c = new ILCursor(il);
-            if (!c.TryGotoNext(MoveType.Before, i => i.MatchLdfld("Terraria.Player", "statManaMax2"), i => i.MatchLdcI4(400)))
-			{
-                Logger.Fatal("Instruction not found");
-                return;
-			}
-            c.Index += 2;
-            c.Instrs[c.Index].Operand = 500;
-            c.Index += 3;
-            c.Instrs[c.Index].Operand = 500;
-        }
 
-		private void Player_LoadPlayer(ILContext il)
-		{
-            ILCursor c = new ILCursor(il);
-            if (!c.TryGotoNext(MoveType.Before, i => i.MatchLdfld("Terraria.Player", "statMana"), i => i.MatchLdcI4(400)))
+            if (!c.TryGotoNext(i => i.MatchLdcI4(400)))
             {
-                Logger.Fatal("Instruction not found");
+                Logger.Warn("[IL] Could not match LdcI4: 400! (1)");
+
                 return;
-			}
-            c.Index += 2;
-            c.Instrs[c.Index].Operand = 500;
-            c.Index += 3;
-            c.Instrs[c.Index].Operand = 500;
+            }
+
+            c.Index++;
+
+            c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldc_I4, 500);
+
+            if (!c.TryGotoNext(i => i.MatchLdcI4(400)))
+            {
+                Logger.Warn("[IL] Could not match LdcI4: 400! (2)");
+
+                return;
+            }
+
+            c.Index++;
+
+            c.Emit(OpCodes.Pop);
+            c.Emit(OpCodes.Ldc_I4, 500);
         }
 
-		private void ManaFruitUI(On.Terraria.Main.orig_DrawInterface_Resources_Mana orig)
+        private void ManaFruitUI(On.Terraria.Main.orig_DrawInterface_Resources_Mana orig)
         {
             Player player = Main.player[Main.myPlayer];
             int fruits = player.GetModPlayer<FruitPlayer>().manaFruits;

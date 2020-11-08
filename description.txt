@@ -5,7 +5,9 @@ This mod adds 4 things:
   ~ Mana Fruit UI
   ~ Increases max mana cap from 400 to 500
 
-Mana Fruit spawns at the same time as Life Fruit. They spawn in the jungle and can be detected by both metal detectors and spelunker potions. You can consume a maximum of 10 fruits for a total of 300 mana.
+Mana Fruit spawns after defeating all three mechanical bosses. They spawn in the jungle and can be detected by both metal detectors and spelunker potions. You can consume a maximum of 10 fruits for a total of 300 mana.
+
+Credit to [c/ff0000:convicted tomatophile (Stevie)] for mana cap increase.
 
  Changelog:
 
