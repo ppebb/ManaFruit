@@ -8,8 +8,13 @@ This mod adds 4 things:
 Mana Fruit spawns after defeating all three mechanical bosses. They spawn in the jungle and can be detected by both metal detectors and spelunker potions. You can consume a maximum of 10 fruits for a total of 300 mana.
 
 Credit to [c/ff0000:convicted tomatophile (Stevie)] for mana cap increase.
+Thanks to SmugB for world gen rewrite.
 
  Changelog:
+v0.1.4 ~
+ ~ Increased spawn rate
+ ~ Fixed mod unloading improperly
+ ~ Increased mana fruit spawn rate
 
 v0.1.3 ~
  ~ Increased max mana cap from 400 to 500

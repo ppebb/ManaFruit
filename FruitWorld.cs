@@ -14,7 +14,7 @@ namespace ManaFruit
 				return;
 			}
 
-			float genChance = Main.expertMode ? 0.0075f : 0.005f;
+			float genChance = Main.expertMode ? 0.0095f : 0.006f;
 			int iterations = (int)(Main.maxTilesX * Main.maxTilesY * 1.5E-05f * Main.worldRate);
 			for (int iterator = 0; iterator < iterations; iterator++)
 			{

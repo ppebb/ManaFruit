@@ -11,8 +11,9 @@ namespace ManaFruit
 {
 	public class ManaFruitMod : Mod
 	{
-        public static SpriteBatch spriteBatch = Main.spriteBatch;
+        public SpriteBatch spriteBatch = Main.spriteBatch;
         public int UI_ScreenAnchorX => Main.screenWidth - 800;
+
         public override void Load()
 		{
 			IL.Terraria.Player.Update += Player_Update;
