@@ -1,0 +1,12 @@
+Items: {
+	ManaFruit: {
+		DisplayName: Mana Fruit
+		Tooltip:
+			'''
+			Permanently increases maxmimum mana by 10
+			'The fruit tastes sickeningly sweet'
+			'''
+	}
+}
+
+Tiles.ManaFruitTile.MapEntry: Mana Fruit

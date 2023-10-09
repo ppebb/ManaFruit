@@ -5,4 +5,4 @@ homepage = https://discord.gg/EB6yPZj
 hideCode = false
 hideResources = false
 includeSource = true
-includePDB = false
+includePDB = true
