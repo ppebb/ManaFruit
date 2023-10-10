@@ -1,5 +1,4 @@
-﻿using ManaFruit.Tiles;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -19,7 +18,7 @@ namespace ManaFruit.Items {
         }
 
         public override bool CanUseItem(Player player) {
-            return player.statManaMax == 200 && player.GetModPlayer<FruitPlayer>().manaFruits < FruitPlayer.maxManaFruits;
+            return player.ConsumedManaCrystals == 9 && player.GetModPlayer<FruitPlayer>().manaFruits < FruitPlayer.maxManaFruits;
         }
 
         public override bool? UseItem(Player player) {
