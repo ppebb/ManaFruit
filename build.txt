@@ -1,6 +1,6 @@
 displayName = [c/9370DB:Mana Fruit Mod]
 author = ppeb
-version = 0.1.5.2
+version = 0.1.5.3
 homepage = https://github.com/ppebb/ManaFruit/tree/1.4.4
 hideCode = false
 hideResources = false
