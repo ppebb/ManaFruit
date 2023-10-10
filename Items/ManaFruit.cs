@@ -16,12 +16,11 @@ namespace ManaFruit.Items {
             Item.useAnimation = 30;
             Item.rare = ItemRarityID.Lime;
             Item.value = Item.sellPrice(gold: 2);
-            Item.createTile = ModContent.TileType<ManaFruitTile>();
         }
 
-        /* public override bool CanUseItem(Player player) { */
-        /*     return player.statManaMax == 200 && player.GetModPlayer<FruitPlayer>().manaFruits < FruitPlayer.maxManaFruits; */
-        /* } */
+        public override bool CanUseItem(Player player) {
+            return player.statManaMax == 200 && player.GetModPlayer<FruitPlayer>().manaFruits < FruitPlayer.maxManaFruits;
+        }
 
         public override bool? UseItem(Player player) {
             player.statManaMax2 += 10;

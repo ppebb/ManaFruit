@@ -1,7 +1,7 @@
 displayName = [c/9370DB:Mana Fruit Mod]
-author = pollen
-version = 0.1.4
-homepage = https://discord.gg/EB6yPZj
+author = ppeb
+version = 0.1.5.2
+homepage = https://github.com/ppebb/ManaFruit/tree/1.4.4
 hideCode = false
 hideResources = false
 includeSource = true
