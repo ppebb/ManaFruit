@@ -1,7 +1,7 @@
-This mod adds 3 things:
+Adds Mana Fruit as a counterpart to Life Fruit.
 
-  - Mana Fruit Item
-  - Mana Fruit Tile
-  - Mana Fruit UI
+Mana Fruit spawn after defeating all three mechanical bosses. They spawn in the jungle and can be detected by both metal detectors and spelunker potions. You can consume a maximum of 10 fruits for a total of 300 mana.
 
-Mana Fruit spawns after defeating all three mechanical bosses. They spawn in the jungle and can be detected by both metal detectors and spelunker potions. You can consume a maximum of 10 fruits for a total of 300 mana.
+[img]https://ppeb.me/files/ManaFruit.png[/img]
+
+Consuming fruit will begin to turn your mana crystals purple, with an option to only show the number of fruit you have eaten or to color all crystals purple once 10 are consumed.

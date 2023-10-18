@@ -48,7 +48,7 @@ namespace ManaFruit {
             string fancyFolder = "Images/UI/PlayerResourceSets/FancyClassic/";
             string barsFolder = "Images/UI/PlayerResourceSets/HorizontalBars/";
 
-            if (context.resourceNumber >= Main.LocalPlayer.GetModPlayer<FruitPlayer>().manaFruits) // figure this shit out
+            if (context.resourceNumber >= Main.LocalPlayer.GetModPlayer<FruitPlayer>().manaFruits && !(ModContent.GetInstance<UIConfig>().DrawAllPurple && Main.LocalPlayer.GetModPlayer<FruitPlayer>().manaFruits == 10))
                 return;
 
             // NOTE: CompareAssets is defined below this method's body

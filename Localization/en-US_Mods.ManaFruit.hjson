@@ -10,3 +10,14 @@ Items: {
 }
 
 Tiles.ManaFruitTile.MapEntry: Mana Fruit
+
+Configs: {
+	UIConfig: {
+		DisplayName: UI Config
+
+		DrawAllPurple: {
+			Label: Draw All Stars as Purple
+			Tooltip: Once you have 10 mana fruit, all of your mana stars will draw as the mana fruit sprite
+		}
+	}
+}
