@@ -13,6 +13,23 @@ namespace ManaFruit {
     public class ManaFruitMod : Mod {
         public override void Load() {
             IL_PlayerStatsSnapshot.ctor += ctor;
+
+            if (ModLoader.TryGetMod("Munchies", out Mod munchies)) {
+                munchies.Call(
+                    "AddMultiUseConsumable",
+                    this,
+                    "1.4", // munchies version
+                    ModContent.GetModItem(ModContent.ItemType<Items.ManaFruit>()),
+                    "player", // category of player or world consumable
+                    () => Main.LocalPlayer.GetModPlayer<FruitPlayer>().manaFruits, // current count
+                    () => 10, // total count
+                    null, // Color
+                    "classic", // difficulty
+                    null, // Extra tooltip text
+                    () => Main.hardMode && NPC.downedMechBossAny, // Availability
+                    this.GetLocalization("Acquisition.ManaFruit") // Acquisition text
+                );
+            }
         }
 
         public delegate void SnapshotDelegate(ref PlayerStatsSnapshot snapshot);
