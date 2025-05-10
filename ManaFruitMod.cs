@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Mono.Cecil.Cil;
@@ -11,7 +13,28 @@ using Terraria.ModLoader;
 
 namespace ManaFruit {
     public class ManaFruitMod : Mod {
+        internal static bool calamityEnabled = false;
+        internal static ModPlayer baseCalamityPlayer;
+        internal static FieldInfo PHeart;
+        internal static FieldInfo ECore;
+        internal static FieldInfo CShard;
+
         public override void Load() {
+            if (ModLoader.TryGetMod("CalamityMod", out Mod Calamity)) {
+                calamityEnabled = true;
+
+                Type calamityPlayer = Calamity.Code.GetType("CalamityMod.CalPlayer.CalamityPlayer");
+                if (calamityPlayer == null)
+                    return;
+
+                if (!Calamity.TryFind("CalamityPlayer", out baseCalamityPlayer))
+                    return;
+
+                PHeart = calamityPlayer.GetField("pHeartt");
+                ECore = calamityPlayer.GetField("eCore");
+                CShard = calamityPlayer.GetField("cShard");
+            }
+
             IL_PlayerStatsSnapshot.ctor += ctor;
 
             if (ModLoader.TryGetMod("Munchies", out Mod munchies)) {
@@ -30,6 +53,14 @@ namespace ManaFruit {
                     this.GetLocalization("Acquisition.ManaFruit") // Acquisition text
                 );
             }
+        }
+
+        public override void Unload() {
+            calamityEnabled = false;
+            baseCalamityPlayer = null;
+            PHeart = null;
+            ECore = null;
+            CShard = null;
         }
 
         public delegate void SnapshotDelegate(ref PlayerStatsSnapshot snapshot);
@@ -52,6 +83,8 @@ namespace ManaFruit {
     }
 
     public class ManaFruitOverlay : ModResourceOverlay {
+        private bool shownError = false;
+
         // This field is used to cache vanilla assets used in the CompareAssets helper method further down in this file
         private Dictionary<string, Asset<Texture2D>> vanillaAssetCache = new();
 
@@ -60,6 +93,24 @@ namespace ManaFruit {
 
         // Unlike VanillaLifeOverlay, every star is drawn over by this hook.
         public override void PostDrawResource(ResourceOverlayDrawContext context) {
+            if (ManaFruitMod.calamityEnabled && !shownError) {
+                try {
+                    ModPlayer player = Main.LocalPlayer.GetModPlayer(ManaFruitMod.baseCalamityPlayer);
+
+                    bool pHeart = (bool)ManaFruitMod.PHeart.GetValue(player);
+                    bool eCore = (bool)ManaFruitMod.ECore.GetValue(player);
+                    bool cShard = (bool)ManaFruitMod.CShard.GetValue(player);
+
+                    if (pHeart || eCore || cShard)
+                        return;
+                } catch {
+                    if (!shownError) {
+                        Main.NewText("There was an error checking for CalamityMod consumables! Please report this to the ManaFruit developer on Steam or Github!");
+                        shownError = true;
+                    }
+                }
+            }
+
             Asset<Texture2D> asset = context.texture;
 
             string fancyFolder = "Images/UI/PlayerResourceSets/FancyClassic/";

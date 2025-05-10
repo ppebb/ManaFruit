@@ -1,9 +1,9 @@
 displayName = [c/9370DB:Mana Fruit Mod]
 author = ppeb
-version = 0.1.7
+version = 0.1.8
 homepage = https://github.com/ppebb/ManaFruit/tree/1.4.4
 hideCode = false
 hideResources = false
 includeSource = true
 includePDB = true
-weakReferences = Munchies
+weakReferences = Munchies, CalamityMod
