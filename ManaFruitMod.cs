@@ -30,7 +30,7 @@ namespace ManaFruit {
                 if (!Calamity.TryFind("CalamityPlayer", out baseCalamityPlayer))
                     return;
 
-                PHeart = calamityPlayer.GetField("pHeartt");
+                PHeart = calamityPlayer.GetField("pHeart");
                 ECore = calamityPlayer.GetField("eCore");
                 CShard = calamityPlayer.GetField("cShard");
             }
